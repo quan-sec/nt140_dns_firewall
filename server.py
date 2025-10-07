@@ -1,7 +1,7 @@
 import socket
 import resolver
 
-HOST = "0.0.0.0"
+HOST = "8.8.8.8"
 PORT = 53
 
 def run():
