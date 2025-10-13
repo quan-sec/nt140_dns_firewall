@@ -2,9 +2,15 @@ import socket
 import cache
 from dnslib import DNSRecord
 import logging
+from pathlib import Path
 
-# Cấu hình log
-logging.basicConfig(filename="dns.log", level=logging.INFO,
+# Ensure logs/ directory next to this file and write logs there
+LOG_DIR = Path(__file__).resolve().parent / "logs"
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+LOG_FILE = LOG_DIR / "dns.log"
+
+# Cấu hình log -> write to logs/dns.log
+logging.basicConfig(filename=str(LOG_FILE), level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(message)s")
 
 FORWARDER = ("8.8.8.8", 53)  # DNS upstream
